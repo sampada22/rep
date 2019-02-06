@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<title>Weather Station</title>
+<head>
+	<link rel = "stylesheet" href = "{{BASE_URL}}/static/styling.css"/>
+	<meta http-equiv = "Content-Type"content = "text/html; charset = UTF- 8"/>
+
+	<style>
+		h1{
+			color : black;
+			text-shadow : 1px 1 px 2px black, 0 0 25 px blue, 0 0 5 px darkblue;
+			font-family : Arial, Helvetica, sans-serif;
+			text-align : center;
+			font-size : 100 px;
+		}
+
+		h2{
+			color : black;
+			text-align : center;
+			font-family : Arial, Helvetica, sans-serif;
+		}
+
+		body{
+			background-color : lightblue;
+			text-align : center;
+		}
+		
+		img{
+			background-color : lightblue;
+			display : inline-block;
+		}
+		#g1,
+		#g2{
+			width : 200px;
+			height : 160px;
+			display : inline-block;
+			margin : 1em;
+		}	
+		
+	</style>
+	<h1>WELCOME TO MINI-WEATHER STATION</h1>
+</head>
+
+<body>
+	<div id = "g1"></div>
+	<div id = "g2"></div>
+	<div id = "g3"></div>
+	<script src = "{{BASE_URL}}/static/raphael-2.1.4.min.js"></script>
+	<script src = "{{BASE_URL}}/static/justgage.js"></script>
+	<script>
+		var g1,g2;
+		document.addEventListener("DOMContentLoaded",function(event){
+			g1 = new JustGage({
+				id : "g1",
+				gaugeWidthScale : 1.0,
+				value : 16,
+				titleFontColor : "black",
+				min: -10,
+				valueFontColor : "lightblue",
+				labelFontColor : "black",
+				max : 50,
+				title : "Temperature",
+				label : "Celsius"
+			});
+
+			g2 = new JustGage({
+				id : "g2",
+				gaugeWidthScale : 1.0,
+				value : 67,
+				valueFontColor : "lightblue",
+				titleFontColor : "black",
+				labelFontColor : "black",
+				min : 0,
+				max : 100,
+				title : "Humidity",
+				label : "%"
+			});
+		
+			g3 = new JustGage({
+				id : "g3",
+				gaugeWidthScale : 1.0,
+				value : 67,
+				valueFontColor : "lightblue",
+				titleFontColor : "black",
+				labelFontColor : "black",
+				min : 0,
+				max : 100,
+				title : "Heat Index",
+				label : "Fahrenheit"
+			});
+		});
+	</script>
+	<h2>Humidity : {{humidity}} % </h2>
+	<h2>Temperature : {{temp_in_C}} &#176 C </h2>
+	<h2>Heat Index : {{heatIndex_in_C}} &#176 F </h2>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>Graphs</h1>
+	<img src = "/plot/hum"alt = "Humidity graph to be loaded" width = "49%" display = "inline-block">
+	<img src = "/plot/temp" alt = "Temperature graph to be loaded" width = "49%" display = "inline_block">
+	<img src = "/plot/heatIndex" alt = "Heat Index graph to be loaded" width = "49%" display = "inline-block">
+</body>
+</html>
