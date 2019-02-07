@@ -12,9 +12,9 @@ import glob
 import numpy as np
 import struct
 import threading
-import datetime
+from datetime import date
 
-dateToday = datetime.datetime.now()
+dateToday = str(date.today())
 
 app = Flask(__name__)
 
@@ -264,7 +264,7 @@ if __name__ == '__main__':
 
 	#app.run()
 	#app.debug = True;
-	run_Server()
-	#update_Database()
+	#run_Server()
+	update_Database()
 	#time.sleep(0.5)
 	#main()
